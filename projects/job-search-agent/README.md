@@ -1,10 +1,17 @@
 # 求职自动化投递 Agent
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../assets/pineapple-tech-dark.png">
+  <img src="../../assets/pineapple-tech.png" alt="Pineapple Tech — 菠萝图形与品牌字标" width="720">
+</picture>
+
 帮助求职者用本人确认的经历和岗位原文准备申请：解释为什么匹配、哪里缺证据、材料改了什么，并保留求职状态的来源。目标是在获准渠道中完成准备、人工确认与投递闭环。
 
 **当前版本：v0.3，M1 本地准备原型。** 已交付中文 Skill 和无外部依赖的 Node.js 辅助脚本。正式职位采集、邮件同步、辅助填写及提交仍是后续设计；高分只产生待审建议。当前没有外发工具。
 
-作者：**Pineapple-Tech 菠萝吹雪**。
+项目品牌：**Pineapple Tech**。作者与维护者：**Pineapple-Tech 菠萝吹雪**。
+
+Logo、品牌名称与商标使用说明见 [BRAND.md](../../BRAND.md)；商标注册状态尚未核实，本项目不使用注册商标标记。
 
 ## 功能与实施范围
 

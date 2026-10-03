@@ -21,7 +21,8 @@
     "Personal absolute paths replaced by repository-relative instructions",
     "Private Page URLs and original local delivery manifest excluded",
     "Raw independent command logs excluded; sanitized summary included",
-    "Project and repository README added; license not assigned automatically"
+    "Project and repository README added; license not assigned automatically",
+    "Supplied Pineapple Tech logos adapted for light and dark themes; project branding and unverified trademark status documented"
   ],
   "files": [
     {
@@ -62,7 +63,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "d14906fac095d1e09bc15bbe48b3e85ae08b6f3527ef94d5555ea8d47921911f"
+      "sha256": "ae622a0a737b838a54f08b697c1bad44c26b4716e128b110bc9a239d012201a0"
     },
     {
       "path": "github-research-evidence.json",
@@ -180,5 +181,20 @@
       "path": "求职自动化投递Agent设计.md",
       "sha256": "ae0b8e668034ab77c4c71f3f23594460ffce2474e2b84e1c62ff52ea8b7b529e"
     }
-  ]
+  ],
+  "branding": {
+    "name": "Pineapple Tech",
+    "trademark_registration_verified": false,
+    "assets_path_base": "repository_root",
+    "assets": [
+      {
+        "path": "assets/pineapple-tech.png",
+        "sha256": "5f23d21b9ce43db4dc69f8a004142cac086fc9f8900c1d17fa50ba78e9c7950c"
+      },
+      {
+        "path": "assets/pineapple-tech-dark.png",
+        "sha256": "0d75f50dd004a01ec49e44ebf7ddb1e777a938a25efe1c740ebff264e73b22cd"
+      }
+    ]
+  }
 }
