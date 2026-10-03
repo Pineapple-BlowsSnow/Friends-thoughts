@@ -1,0 +1,32 @@
+{
+  "job_version_id": "00000000-0000-4000-8000-000000000021",
+  "fact_snapshot_hash": "1c186af3281716b82f49a5af08aa2212a3a566ede0fd4c5563402345ef908089",
+  "language": "zh",
+  "resume_sections": [
+    {
+      "section_id": "s1",
+      "title": "项目经历",
+      "body": "Python 数据清洗"
+    }
+  ],
+  "cover_letter": null,
+  "claims": [
+    {
+      "claim_id": "c1",
+      "output_section_id": "s1",
+      "start": 0,
+      "end": 11,
+      "claim_text": "Python 数据清洗",
+      "fact_ids": [
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "jd_requirement_ids": [
+        "r0"
+      ],
+      "transformation": "verbatim"
+    }
+  ],
+  "change_summary": [],
+  "questions_for_user": [],
+  "warnings": []
+}

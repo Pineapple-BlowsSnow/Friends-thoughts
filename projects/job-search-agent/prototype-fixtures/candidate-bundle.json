@@ -1,0 +1,289 @@
+{
+  "user_id": "11111111-1111-4111-8111-111111111111",
+  "facts": [
+    {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "user_id": "11111111-1111-4111-8111-111111111111",
+      "text": "Python 数据清洗",
+      "project_id": "project-a",
+      "source_ref": "synthetic-resume",
+      "kind": "experience",
+      "polarity": "positive",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "user_id": "11111111-1111-4111-8111-111111111111",
+      "text": "参与工具开发",
+      "project_id": "project-a",
+      "source_ref": "synthetic-resume",
+      "kind": "experience",
+      "polarity": "positive",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000003",
+      "user_id": "11111111-1111-4111-8111-111111111111",
+      "text": "应届生",
+      "project_id": "project-a",
+      "source_ref": "synthetic-resume",
+      "kind": "experience",
+      "polarity": "positive",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000004",
+      "user_id": "11111111-1111-4111-8111-111111111111",
+      "text": "课程项目",
+      "project_id": "project-a",
+      "source_ref": "synthetic-resume",
+      "kind": "experience",
+      "polarity": "positive",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000005",
+      "user_id": "11111111-1111-4111-8111-111111111111",
+      "text": "广州实习",
+      "project_id": "project-a",
+      "source_ref": "synthetic-resume",
+      "kind": "experience",
+      "polarity": "positive",
+      "status": "unconfirmed"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000006",
+      "user_id": "11111111-1111-4111-8111-111111111111",
+      "text": "职业方向",
+      "project_id": "project-a",
+      "source_ref": "synthetic-resume",
+      "kind": "experience",
+      "polarity": "positive",
+      "status": "unconfirmed"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "00000000-0000-4000-8000-000000000020",
+      "user_id": "11111111-1111-4111-8111-111111111111",
+      "source_kind": "user_provided",
+      "source_text": "Python 数据清洗；参与工具开发；应届生；课程项目；广州实习；职业方向",
+      "jd": {
+        "job_version_id": "00000000-0000-4000-8000-000000000021",
+        "raw_sha256": "977ab83980b704bb2cb7e1dd544f50e1a3fa7e991b3550ee3c12e58d85c38985",
+        "source_text_sha256": "977ab83980b704bb2cb7e1dd544f50e1a3fa7e991b3550ee3c12e58d85c38985",
+        "language": "zh",
+        "requirements": [
+          {
+            "requirement_id": "r0",
+            "kind": "skill",
+            "priority": "must_have",
+            "value": "Python 数据清洗",
+            "certainty": "explicit",
+            "source_span": {
+              "source_text_sha256": "977ab83980b704bb2cb7e1dd544f50e1a3fa7e991b3550ee3c12e58d85c38985",
+              "start": 0,
+              "end": 11,
+              "quote": "Python 数据清洗"
+            }
+          },
+          {
+            "requirement_id": "r1",
+            "kind": "skill",
+            "priority": "preferred",
+            "value": "参与工具开发",
+            "certainty": "explicit",
+            "source_span": {
+              "source_text_sha256": "977ab83980b704bb2cb7e1dd544f50e1a3fa7e991b3550ee3c12e58d85c38985",
+              "start": 12,
+              "end": 18,
+              "quote": "参与工具开发"
+            }
+          },
+          {
+            "requirement_id": "r2",
+            "kind": "skill",
+            "priority": "preferred",
+            "value": "应届生",
+            "certainty": "explicit",
+            "source_span": {
+              "source_text_sha256": "977ab83980b704bb2cb7e1dd544f50e1a3fa7e991b3550ee3c12e58d85c38985",
+              "start": 19,
+              "end": 22,
+              "quote": "应届生"
+            }
+          },
+          {
+            "requirement_id": "r3",
+            "kind": "skill",
+            "priority": "preferred",
+            "value": "课程项目",
+            "certainty": "explicit",
+            "source_span": {
+              "source_text_sha256": "977ab83980b704bb2cb7e1dd544f50e1a3fa7e991b3550ee3c12e58d85c38985",
+              "start": 23,
+              "end": 27,
+              "quote": "课程项目"
+            }
+          },
+          {
+            "requirement_id": "r4",
+            "kind": "skill",
+            "priority": "preferred",
+            "value": "广州实习",
+            "certainty": "explicit",
+            "source_span": {
+              "source_text_sha256": "977ab83980b704bb2cb7e1dd544f50e1a3fa7e991b3550ee3c12e58d85c38985",
+              "start": 28,
+              "end": 32,
+              "quote": "广州实习"
+            }
+          },
+          {
+            "requirement_id": "r5",
+            "kind": "skill",
+            "priority": "preferred",
+            "value": "职业方向",
+            "certainty": "explicit",
+            "source_span": {
+              "source_text_sha256": "977ab83980b704bb2cb7e1dd544f50e1a3fa7e991b3550ee3c12e58d85c38985",
+              "start": 33,
+              "end": 37,
+              "quote": "职业方向"
+            }
+          }
+        ],
+        "salary": null,
+        "deadline": null,
+        "unknowns": [],
+        "warnings": []
+      },
+      "evidence": {
+        "job_version_id": "00000000-0000-4000-8000-000000000021",
+        "fact_snapshot_hash": "1c186af3281716b82f49a5af08aa2212a3a566ede0fd4c5563402345ef908089",
+        "preference_version_id": "00000000-0000-4000-8000-000000000022",
+        "scoring_version": "v0.3",
+        "items": [
+          {
+            "evidence_item_id": "e0",
+            "dimension": "skills",
+            "requirement_id": "r0",
+            "fact_ids": [
+              "00000000-0000-4000-8000-000000000001"
+            ],
+            "evidence_state": "supported",
+            "match_level": 1,
+            "brief_reason": "Synthetic confirmed evidence",
+            "missing_information": []
+          },
+          {
+            "evidence_item_id": "e1",
+            "dimension": "responsibilities",
+            "requirement_id": "r1",
+            "fact_ids": [
+              "00000000-0000-4000-8000-000000000002"
+            ],
+            "evidence_state": "supported",
+            "match_level": 1,
+            "brief_reason": "Synthetic confirmed evidence",
+            "missing_information": []
+          },
+          {
+            "evidence_item_id": "e2",
+            "dimension": "seniority",
+            "requirement_id": "r2",
+            "fact_ids": [
+              "00000000-0000-4000-8000-000000000003"
+            ],
+            "evidence_state": "supported",
+            "match_level": 1,
+            "brief_reason": "Synthetic confirmed evidence",
+            "missing_information": []
+          },
+          {
+            "evidence_item_id": "e3",
+            "dimension": "domain",
+            "requirement_id": "r3",
+            "fact_ids": [
+              "00000000-0000-4000-8000-000000000004"
+            ],
+            "evidence_state": "supported",
+            "match_level": 1,
+            "brief_reason": "Synthetic confirmed evidence",
+            "missing_information": []
+          },
+          {
+            "evidence_item_id": "e4",
+            "dimension": "conditions",
+            "requirement_id": "r4",
+            "fact_ids": [
+              "00000000-0000-4000-8000-000000000005"
+            ],
+            "evidence_state": "supported",
+            "match_level": 1,
+            "brief_reason": "Synthetic confirmed evidence",
+            "missing_information": []
+          },
+          {
+            "evidence_item_id": "e5",
+            "dimension": "goals",
+            "requirement_id": "r5",
+            "fact_ids": [
+              "00000000-0000-4000-8000-000000000006"
+            ],
+            "evidence_state": "supported",
+            "match_level": 1,
+            "brief_reason": "Synthetic confirmed evidence",
+            "missing_information": []
+          }
+        ],
+        "warnings": []
+      },
+      "rules": {
+        "items": [
+          {
+            "requirement_id": "r0",
+            "dimension": "skills",
+            "weight": 30
+          },
+          {
+            "requirement_id": "r1",
+            "dimension": "responsibilities",
+            "weight": 25
+          },
+          {
+            "requirement_id": "r2",
+            "dimension": "seniority",
+            "weight": 15
+          },
+          {
+            "requirement_id": "r3",
+            "dimension": "domain",
+            "weight": 10
+          },
+          {
+            "requirement_id": "r4",
+            "dimension": "conditions",
+            "weight": 10
+          },
+          {
+            "requirement_id": "r5",
+            "dimension": "goals",
+            "weight": 10
+          }
+        ],
+        "hard_checks": [
+          {
+            "rule_id": "h1",
+            "requirement_id": "r0",
+            "critical": true
+          }
+        ]
+      },
+      "draft": null,
+      "section_projects": {
+        "s1": "project-a"
+      }
+    }
+  ]
+}
