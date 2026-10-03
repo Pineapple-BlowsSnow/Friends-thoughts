@@ -1,0 +1,44 @@
+{
+  "classification": "PROTOTYPE_TESTED",
+  "fictional_materials": true,
+  "external_calls": 0,
+  "runtime_source_sha256_final": "287478dea2810ba9c628717dacad6ef441240fbbb5bcab35c1610838e7c3b1e6",
+  "regression": {
+    "faithful_short_jd_import": "initial DIMENSION_WEIGHTS; fixed by parent; independent retest import succeeds without fabricated domain/goals requirements",
+    "job_A": "NEEDS_INFO, 0..100, coverage0; evidence candidates have not been explicitly confirmed by owner; no HIGH_MATCH or submission permission",
+    "job_B": "BLOCKED, hard certificate fail after confirming directly supplied negative declaration/mapping; 0..70, coverage0.3",
+    "draft_and_review_cli": "Latest retest: project-specific titles NEEDS_HUMAN; generic title with explicit project binding PASS_VERBATIM; no submission permission.",
+    "responsibility_inflation": "BLOCKED/RESPONSIBILITY_INFLATION",
+    "cross_project": "BLOCKED/CROSS_PROJECT",
+    "rephrase_and_patch": "NEEDS_HUMAN; preview_binding/external_approval=null",
+    "job_A_import": "PASS",
+    "job_B_import": "PASS"
+  },
+  "manual_metrics": {
+    "as_of": "2026-10-03T15:59:59Z",
+    "cohort": "user_report_only",
+    "days": 30,
+    "submitted": 1,
+    "mature": 1,
+    "pending": 0,
+    "unknown": 1,
+    "ever_interviewed": 1,
+    "ever_replied": 0,
+    "interview_rate": 1,
+    "reply_rate": 0,
+    "interpretation": "Historical interview remains counted after rejection. Unknown A is not counted as submitted. No human reply is fabricated. One fictional mature application is insufficient to infer job-search effectiveness.",
+    "test_scope": "SYNTHETIC_EXACT_TIMESTAMP_FIXTURE_ONLY; the UTC04:00 values are separately assumed mechanical fixtures, not actual user-event timestamp records"
+  },
+  "date_precision_limitation": "Date-only CLI was actually attempted and rejected UTC_REQUIRED. Do not choose a default exact time for real date-only input. Existing exact-timestamp metrics are mechanical synthetic fixtures only.",
+  "capability_boundary": "M1 local preparation/manual tracking only. No model/API/source collection/browser prefill/email/outbound submission; no production identity, RLS, scheduled deletion, model budget, or source rate control acceptance.",
+  "materials": {
+    "docx": "../prototype-demo/陈晓虚构演示.docx",
+    "pdf": "../prototype-demo/陈晓虚构演示.pdf",
+    "preview": "../prototype-demo/陈晓虚构演示预览.png",
+    "pages": 1,
+    "render_status": "PROTOTYPE_TESTED; bundled LibreOffice only",
+    "visual_check": "PASS: all Chinese readable; no clipping/overlap; title and filename label demo; participation and 300 preserved",
+    "render_failure_then_recovery": "PingFang and Arial Unicode MS without fontconfig failed with missing Chinese. Temporary font directory/config for renderer subprocess restored all 8 keyword checks, preserving failure fixtures."
+  },
+  "evidence_distribution": "Public summary of an independent local run; raw command logs, personal paths, case files and keys are excluded. This is not a production or competitor runtime test."
+}

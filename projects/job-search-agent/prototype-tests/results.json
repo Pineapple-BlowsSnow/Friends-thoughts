@@ -1,0 +1,295 @@
+{
+  "scope": "actual_local_prototype_functions_and_cli_synthetic_data_only",
+  "node": "v24.21.0",
+  "runtime_sha256": "287478dea2810ba9c628717dacad6ef441240fbbb5bcab35c1610838e7c3b1e6",
+  "test_sha256": "849de8ac954aa9025f740114258f4fb322930643508751a71dfda6ca1402dd38",
+  "schema_sha256": "b9307d56b9c18e5ea11e13ce6700aa5c1e3f7cf492f0524953be17b65b6c1042",
+  "total": 71,
+  "passed": 71,
+  "tests": [
+    {
+      "name": "score/full-match",
+      "passed": true
+    },
+    {
+      "name": "score/no-send-permission",
+      "passed": true
+    },
+    {
+      "name": "score/unreviewed-mapping",
+      "passed": true
+    },
+    {
+      "name": "score/unconfirmed-fact",
+      "passed": true
+    },
+    {
+      "name": "score/hard-fail-wins",
+      "passed": true
+    },
+    {
+      "name": "score/no-negative-proof",
+      "passed": true
+    },
+    {
+      "name": "score/must-have-hard-rule-cannot-be-removed",
+      "passed": true
+    },
+    {
+      "name": "score/duplicate-hard-requirement",
+      "passed": true
+    },
+    {
+      "name": "score/negative-fact-cannot-support",
+      "passed": true
+    },
+    {
+      "name": "score/unknown-upper-bound",
+      "passed": true
+    },
+    {
+      "name": "score/jd-missing-dimensions",
+      "passed": true
+    },
+    {
+      "name": "score/partial-hard-is-unknown",
+      "passed": true
+    },
+    {
+      "name": "score/stale-confirmation",
+      "passed": true
+    },
+    {
+      "name": "score/conflict",
+      "passed": true
+    },
+    {
+      "name": "score/weight-error",
+      "passed": true
+    },
+    {
+      "name": "score/duplicate-requirement",
+      "passed": true
+    },
+    {
+      "name": "score/wrong-span",
+      "passed": true
+    },
+    {
+      "name": "score/foreign-fact",
+      "passed": true
+    },
+    {
+      "name": "score/inferred-hard-rule",
+      "passed": true
+    },
+    {
+      "name": "score/duplicate-evidence",
+      "passed": true
+    },
+    {
+      "name": "draft/title-facts-need-human",
+      "passed": true
+    },
+    {
+      "name": "draft/project-binding-required",
+      "passed": true
+    },
+    {
+      "name": "draft/missing-title",
+      "passed": true
+    },
+    {
+      "name": "draft/verbatim-pass",
+      "passed": true
+    },
+    {
+      "name": "draft/stale-snapshot",
+      "passed": true
+    },
+    {
+      "name": "draft/uncovered-claim",
+      "passed": true
+    },
+    {
+      "name": "draft/cross-project",
+      "passed": true
+    },
+    {
+      "name": "draft/responsibility-inflation",
+      "passed": true
+    },
+    {
+      "name": "draft/new-tool",
+      "passed": true
+    },
+    {
+      "name": "draft/new-number",
+      "passed": true
+    },
+    {
+      "name": "draft/number-substring",
+      "passed": true
+    },
+    {
+      "name": "draft/phone-is-not-achievement",
+      "passed": true
+    },
+    {
+      "name": "draft/rephrase-still-needs-human",
+      "passed": true
+    },
+    {
+      "name": "draft/false-verbatim",
+      "passed": true
+    },
+    {
+      "name": "draft/negative-context-not-excerpted",
+      "passed": true
+    },
+    {
+      "name": "draft/unconfirmed-source",
+      "passed": true
+    },
+    {
+      "name": "draft/forbidden-sensitive-kind",
+      "passed": true
+    },
+    {
+      "name": "draft/unicode-codepoint",
+      "passed": true
+    },
+    {
+      "name": "patch/new-version-no-permission",
+      "passed": true
+    },
+    {
+      "name": "patch/stale-rejected",
+      "passed": true
+    },
+    {
+      "name": "patch/forbidden-path",
+      "passed": true
+    },
+    {
+      "name": "patch/unknown-section",
+      "passed": true
+    },
+    {
+      "name": "patch/duplicate-section",
+      "passed": true
+    },
+    {
+      "name": "events/replay-idempotent",
+      "passed": true
+    },
+    {
+      "name": "events/conflicting-replay",
+      "passed": true
+    },
+    {
+      "name": "events/no-official-receipt",
+      "passed": true
+    },
+    {
+      "name": "events/no-cross-user",
+      "passed": true
+    },
+    {
+      "name": "events/future-rejected",
+      "passed": true
+    },
+    {
+      "name": "events/invalid-date-rejected",
+      "passed": true
+    },
+    {
+      "name": "cohort/interview-then-reject",
+      "passed": true
+    },
+    {
+      "name": "cohort/pending-not-denominator",
+      "passed": true
+    },
+    {
+      "name": "cohort/late-event-asof",
+      "passed": true
+    },
+    {
+      "name": "cohort/correction-recomputes",
+      "passed": true
+    },
+    {
+      "name": "events/double-correction",
+      "passed": true
+    },
+    {
+      "name": "cohort/unknown-separate",
+      "passed": true
+    },
+    {
+      "name": "cohort/duplicate-input-rejected",
+      "passed": true
+    },
+    {
+      "name": "vault/authenticated-roundtrip",
+      "passed": true
+    },
+    {
+      "name": "vault/no-cleartext",
+      "passed": true
+    },
+    {
+      "name": "vault/wrong-key",
+      "passed": true
+    },
+    {
+      "name": "vault/tampered-data",
+      "passed": true
+    },
+    {
+      "name": "vault/atomic-store-and-audit",
+      "passed": true
+    },
+    {
+      "name": "vault/lock-prevents-second-writer",
+      "passed": true
+    },
+    {
+      "name": "vault/key-permissions",
+      "passed": true
+    },
+    {
+      "name": "cli/keygen-and-init",
+      "passed": true
+    },
+    {
+      "name": "cli/import-candidates",
+      "passed": true
+    },
+    {
+      "name": "cli/unconfirmed-route",
+      "passed": true
+    },
+    {
+      "name": "cli/confirmation-and-score",
+      "passed": true
+    },
+    {
+      "name": "cli/confirmed-import-rejected",
+      "passed": true
+    },
+    {
+      "name": "cli/no-submit-command",
+      "passed": true
+    },
+    {
+      "name": "cli/no-secret-error-output",
+      "passed": true
+    },
+    {
+      "name": "cli/key-must-be-separate",
+      "passed": true
+    }
+  ]
+}
