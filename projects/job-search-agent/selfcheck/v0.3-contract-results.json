@@ -1,0 +1,464 @@
+{
+  "scope": "v0.3_schema_structural_and_task_boundary_only",
+  "total": 114,
+  "passed": 114,
+  "schema_sha256": "b9307d56b9c18e5ea11e13ce6700aa5c1e3f7cf492f0524953be17b65b6c1042",
+  "tests": [
+    {
+      "name": "positive/EvaluationRun",
+      "passed": true
+    },
+    {
+      "name": "root/EvaluationRun",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/id",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/user_id",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/job_version_id",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/fact_snapshot_hash",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/preference_version_id",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/screening_version",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/scoring_version",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/state",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/selection_reason",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/scheduling_rank",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/score_result_id",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/model_ref",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/actual_cost",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/created_at",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/started_at",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/finished_at",
+      "passed": true
+    },
+    {
+      "name": "required/EvaluationRun/failure_code",
+      "passed": true
+    },
+    {
+      "name": "forbidden/EvaluationRun",
+      "passed": true
+    },
+    {
+      "name": "positive/DocumentPatch",
+      "passed": true
+    },
+    {
+      "name": "root/DocumentPatch",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/id",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/user_id",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/document_id",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/base_version",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/base_digest",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/fact_snapshot_hash",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/operations",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/state",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/created_at",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/decided_by",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/decided_at",
+      "passed": true
+    },
+    {
+      "name": "required/DocumentPatch/result_document_digest",
+      "passed": true
+    },
+    {
+      "name": "forbidden/DocumentPatch",
+      "passed": true
+    },
+    {
+      "name": "positive/EvidenceRequest",
+      "passed": true
+    },
+    {
+      "name": "root/EvidenceRequest",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/id",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/user_id",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/job_version_id",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/requirement_id",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/reason_code",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/question",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/related_fact_ids",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/state",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/response_ref",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/response_digest",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/resolution_fact_ids",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/created_at",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/answered_at",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/confirmed_by",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/confirmed_at",
+      "passed": true
+    },
+    {
+      "name": "required/EvidenceRequest/dismiss_reason",
+      "passed": true
+    },
+    {
+      "name": "forbidden/EvidenceRequest",
+      "passed": true
+    },
+    {
+      "name": "positive/MailReviewItem",
+      "passed": true
+    },
+    {
+      "name": "root/MailReviewItem",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/id",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/user_id",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/source_namespace",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/source_event_id",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/evidence_ref",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/evidence_sha256",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/received_at",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/classification",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/state",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/selected_application_id",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/decision_reason",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/decided_by",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/decided_at",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/status_event_id",
+      "passed": true
+    },
+    {
+      "name": "required/MailReviewItem/row_version",
+      "passed": true
+    },
+    {
+      "name": "forbidden/MailReviewItem",
+      "passed": true
+    },
+    {
+      "name": "positive/InterviewStory",
+      "passed": true
+    },
+    {
+      "name": "root/InterviewStory",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/id",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/user_id",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/job_version_id",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/fact_snapshot_hash",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/title",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/competency_tags",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/situation",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/task",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/action",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/result",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/claims",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/missing_information",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/review_state",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/created_at",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/reviewed_by",
+      "passed": true
+    },
+    {
+      "name": "required/InterviewStory/reviewed_at",
+      "passed": true
+    },
+    {
+      "name": "forbidden/InterviewStory",
+      "passed": true
+    },
+    {
+      "name": "negative/deferred-score",
+      "passed": true
+    },
+    {
+      "name": "negative/completed-no-score",
+      "passed": true
+    },
+    {
+      "name": "negative/failed-no-error",
+      "passed": true
+    },
+    {
+      "name": "negative/negative-cost",
+      "passed": true
+    },
+    {
+      "name": "negative/proposal-decider",
+      "passed": true
+    },
+    {
+      "name": "negative/accepted-no-result",
+      "passed": true
+    },
+    {
+      "name": "negative/arbitrary-json-pointer",
+      "passed": true
+    },
+    {
+      "name": "negative/open-auto-confirmed",
+      "passed": true
+    },
+    {
+      "name": "negative/answered-auto-fact",
+      "passed": true
+    },
+    {
+      "name": "negative/confirmed-no-owner",
+      "passed": true
+    },
+    {
+      "name": "negative/linked-no-application",
+      "passed": true
+    },
+    {
+      "name": "negative/ignored-no-reason",
+      "passed": true
+    },
+    {
+      "name": "negative/verified-no-result",
+      "passed": true
+    },
+    {
+      "name": "negative/missing-result-no-question",
+      "passed": true
+    },
+    {
+      "name": "service/accepted-patch",
+      "passed": true
+    },
+    {
+      "name": "model/no-accepted-patch",
+      "passed": true
+    },
+    {
+      "name": "model/patch-proposal",
+      "passed": true
+    },
+    {
+      "name": "service/answered-request",
+      "passed": true
+    },
+    {
+      "name": "model/no-answered-request",
+      "passed": true
+    },
+    {
+      "name": "model/open-request",
+      "passed": true
+    },
+    {
+      "name": "service/verified-story",
+      "passed": true
+    },
+    {
+      "name": "model/no-verified-story",
+      "passed": true
+    },
+    {
+      "name": "model/story-draft",
+      "passed": true
+    }
+  ]
+}

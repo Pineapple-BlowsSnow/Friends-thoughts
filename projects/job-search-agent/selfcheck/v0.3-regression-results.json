@@ -1,0 +1,1035 @@
+{
+  "scope": "offline_schema_document_and_reference_semantics_only",
+  "schema_sha256": "b9307d56b9c18e5ea11e13ce6700aa5c1e3f7cf492f0524953be17b65b6c1042",
+  "validator": "jsonschema 4.25.1",
+  "format_checker": true,
+  "passed": 205,
+  "total": 205,
+  "tests": [
+    {
+      "name": "schema/meta-schema",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive/JDParsed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/JDParsed/job_version_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/JDParsed/raw_sha256",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/JDParsed/source_text_sha256",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/JDParsed/language",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/JDParsed/requirements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/JDParsed/salary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/JDParsed/deadline",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/JDParsed/unknowns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/JDParsed/warnings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "extra-field/JDParsed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive/MatchEvidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/MatchEvidence/job_version_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/MatchEvidence/fact_snapshot_hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/MatchEvidence/preference_version_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/MatchEvidence/scoring_version",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/MatchEvidence/items",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/MatchEvidence/warnings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "extra-field/MatchEvidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive/ApplicationDraft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApplicationDraft/job_version_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApplicationDraft/fact_snapshot_hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApplicationDraft/language",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApplicationDraft/resume_sections",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApplicationDraft/cover_letter",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApplicationDraft/claims",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApplicationDraft/change_summary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApplicationDraft/questions_for_user",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApplicationDraft/warnings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "extra-field/ApplicationDraft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive/DraftReview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/DraftReview/draft_digest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/DraftReview/issues",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/DraftReview/recommended_fixes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/DraftReview/warnings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "extra-field/DraftReview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive/StatusClassification",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusClassification/source_event_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusClassification/proposed_stage",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusClassification/application_candidates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusClassification/evidence_quote",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusClassification/confidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusClassification/ambiguous",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusClassification/reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusClassification/warnings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusClassification/source_namespace",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "extra-field/StatusClassification",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive/ScoreResult",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/user_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/job_version_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/preference_version_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/fact_snapshot_hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/scoring_version",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/hard_checks",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/dimensions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/score_low",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/score_high",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/coverage",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/route",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ScoreResult/calculated_at",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "extra-field/ScoreResult",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive/ConnectorPolicy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/source_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/user_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/collect_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/prefill_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/submit_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/tos_url",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/tos_digest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/reviewed_at",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/review_due_at",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/target_allowlist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/auth_secret_ref",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/grant_ids",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ConnectorPolicy/upload_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "extra-field/ConnectorPolicy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive/ApprovalBinding",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/user_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/application_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/payload_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/payload_hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/policy_version",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/decision",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/actor_session_ref",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/approved_at",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/expires_at",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/revoked_at",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/exception_reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/operation_scopes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/ApprovalBinding/questionnaire_schema_hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "extra-field/ApprovalBinding",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive/StatusEvent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/user_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/application_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/event_type",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/stage",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/evidence_type",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/source_event_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/evidence_ref",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/evidence_sha256",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/confidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/occurred_at",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/observed_at",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/supersedes_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/confirmed_by",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/source_namespace",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/StatusEvent/round",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "extra-field/StatusEvent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive/SourceSpan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/SourceSpan/source_text_sha256",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/SourceSpan/start",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/SourceSpan/end",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/SourceSpan/quote",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "extra-field/SourceSpan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive/EvidenceItem",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/EvidenceItem/evidence_item_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/EvidenceItem/dimension",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/EvidenceItem/requirement_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/EvidenceItem/fact_ids",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/EvidenceItem/evidence_state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/EvidenceItem/match_level",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/EvidenceItem/brief_reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "required/EvidenceItem/missing_information",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "extra-field/EvidenceItem",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/unsupported-full-score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/supported-zero-score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/supported-half-score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/partial-full-score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/empty-confirmed-facts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/duplicate-fact-ids",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/invalid-uuid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/unknown-full-score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/false-unique-multiple",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/false-unique-empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/known-stage-no-quote",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/blank-quote",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/empty-claims",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/arbitrary-deadline",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/enabled-empty-allowlist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/disabled-but-collect",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/receipt-offer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/transport-interview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative/invalid-expiry-format",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "root-contract/JDParsed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "root-contract/MatchEvidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "root-contract/ApplicationDraft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "root-contract/DraftReview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "root-contract/StatusClassification",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "root-contract/ScoreResult",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "root-contract/ConnectorPolicy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "root-contract/ApprovalBinding",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "root-contract/StatusEvent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "task-boundary/jd_parse",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "task-boundary/match_evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "task-boundary/application_draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "task-boundary/draft_review",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "task-boundary/status_classify",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "interview-round-positive",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "interview-round-negative/0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "interview-round-negative/-1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "interview-round-negative/1.5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "interview-round-negative/second",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-routing/0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-routing/1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-routing/2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-routing/3",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-routing/4",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-routing/5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-routing/6",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-routing/7",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-routing/8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-score/83",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-score/75-85",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-semantic/zero-width",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-semantic/wrong-quote",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-semantic/wrong-text-hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-semantic/reverse-time",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-semantic/inconsistent-sum",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-semantic/wrong-route",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-semantic/duplicate-dimensions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-semantic/wrong-claim-text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-semantic/other-users-fact",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reference-semantic/nonexistent-section",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "document-sync/01_PRD.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fences/01_PRD.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "document-sync/02_工作流.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fences/02_工作流.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "document-sync/03_工具清单.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fences/03_工具清单.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "document-sync/04_数据Schema.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fences/04_数据Schema.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "document-sync/05_提示词.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fences/05_提示词.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "document-sync/06_验收指标.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fences/06_验收指标.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "gate-spec/approval.decision == \"approve\"",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "gate-spec/approval.application_id == application.id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "gate-spec/approval.payload_id == frozen_payload.id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "gate-spec/CAS(QUEUED, SUBMITTING",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "gate-spec/executor_revalidates_full_gate_at_dispatch_time",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}
