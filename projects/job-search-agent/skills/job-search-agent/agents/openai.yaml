@@ -1,0 +1,4 @@
+interface:
+  display_name: "中文求职准备 Agent"
+  short_description: "基于本人确认的经历分析岗位、审查简历材料并跟踪求职结果"
+  default_prompt: "使用 $job-search-agent 根据我提供的简历和 JD 建立经历证据、解释匹配并准备待审材料。"
