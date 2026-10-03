@@ -2,7 +2,10 @@
 
 朋友们的奇思妙想：把值得尝试的想法整理成项目说明、产品方案、可运行原型和验证记录，方便朋友们一起讨论、改进与复用。
 
-![Pineapple Tech](assets/pineapple-tech.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/pineapple-tech-dark.png">
+  <img src="assets/pineapple-tech.png" alt="Pineapple Tech — 菠萝图形与品牌字标" width="720">
+</picture>
 
 作者与维护者：**Pineapple-Tech 菠萝吹雪**。
 
