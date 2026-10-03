@@ -1,0 +1,184 @@
+{
+  "version": "v0.3",
+  "edition": "portable_public_repository_snapshot",
+  "date": "2026-10-03",
+  "author": "Pineapple-Tech 菠萝吹雪",
+  "implementation_stage": "M1_LOCAL_PREPARATION_PROTOTYPE",
+  "external_submission_enabled": false,
+  "validation_environment": {
+    "os": "macOS",
+    "node": "24.21.0",
+    "jsonschema": "4.25.1"
+  },
+  "verification": {
+    "actual_prototype_functions_and_cli": "71/71",
+    "new_contracts": "114/114",
+    "reference_and_document_regression": "205/205",
+    "synthetic_chinese_document": "one_page_text_and_visual_checked",
+    "production_acceptance": false
+  },
+  "publication_changes": [
+    "Personal absolute paths replaced by repository-relative instructions",
+    "Private Page URLs and original local delivery manifest excluded",
+    "Raw independent command logs excluded; sanitized summary included",
+    "Project and repository README added; license not assigned automatically"
+  ],
+  "files": [
+    {
+      "path": "01_PRD.md",
+      "sha256": "38a6d5675208d491a9d447ca028b4c590f71a34ba3c0fa15a443a1a20052fdfe"
+    },
+    {
+      "path": "02_工作流.md",
+      "sha256": "3cab1f696cf9b53b49aba3fb036c79e4b28d3ff4f10cd809362e403824764816"
+    },
+    {
+      "path": "03_工具清单.md",
+      "sha256": "cad5b31dbd54a51f4f9c305fe6a7f7c408b489403717b4d08c42d9f4fdb26d35"
+    },
+    {
+      "path": "04_数据Schema.md",
+      "sha256": "c49777b3757b5dbc646cd509dd6d50ade4b2a6bda0285e3ecdde24d2f0e0c360"
+    },
+    {
+      "path": "05_提示词.md",
+      "sha256": "71f23913632973bdb0a7d34eeb2bcea36d059abffc5142e932f5ba82c872e0cd"
+    },
+    {
+      "path": "06_验收指标.md",
+      "sha256": "7cf52f6991d0a0cb178fb459b6d539718109e3ac59524a3f4e4f9ec0ae56f041"
+    },
+    {
+      "path": "07_测试与自检报告.md",
+      "sha256": "7e6804e09c00d7de652fd50e118ede623b2ae1b7985b11064870ea27270e7f85"
+    },
+    {
+      "path": "08_GitHub竞品与技能适配建议.md",
+      "sha256": "6e1bfe7cd086c4516deba55933c193fcc43b4f631a2367badaf47a457aa48d91"
+    },
+    {
+      "path": "09_v0.3交付记录.md",
+      "sha256": "504b8b1b105a184c5a0f615445e6fd32b8ab07bf8a824ae82c63f79a04e863c3"
+    },
+    {
+      "path": "README.md",
+      "sha256": "d14906fac095d1e09bc15bbe48b3e85ae08b6f3527ef94d5555ea8d47921911f"
+    },
+    {
+      "path": "github-research-evidence.json",
+      "sha256": "3995d78f525b6f7c1ccb2adaaa6ccec41b1435a51676c434a1c4dc6b0e9daffa"
+    },
+    {
+      "path": "model-contracts.schema.json",
+      "sha256": "b9307d56b9c18e5ea11e13ce6700aa5c1e3f7cf492f0524953be17b65b6c1042"
+    },
+    {
+      "path": "prototype-demo/陈晓虚构演示.docx",
+      "sha256": "02790f34b9a54e9c61c7bc7c45be861d9db91af199616e926342d1c7bbb1d7d8"
+    },
+    {
+      "path": "prototype-demo/陈晓虚构演示.pdf",
+      "sha256": "adba1671bd685bf2cc04330fb37f9e5df0305bbb028c8260bd3b277864efea98"
+    },
+    {
+      "path": "prototype-demo/陈晓虚构演示预览.png",
+      "sha256": "7adfbdb90dad97cf96cdba592fa58d8ae5e9366ab029b73bc4cb949f8e6c4622"
+    },
+    {
+      "path": "prototype-fixtures/candidate-bundle.json",
+      "sha256": "cd87ef776f2d68e7f88fbf71cb5e719f4768253934928c38ddc0beabbda7d980"
+    },
+    {
+      "path": "prototype-fixtures/confirmed-material-draft.json",
+      "sha256": "fdf1fdff44cb21432a4e27d83302cf30e347aa3066d47f3eb0eed4657a4fe149"
+    },
+    {
+      "path": "prototype-tests/chinese-text-extraction.json",
+      "sha256": "f70f93c9b985aca44899ab16f54b9304f78e10e3363e4fe2fd4c92a90197ac73"
+    },
+    {
+      "path": "prototype-tests/independent-summary.json",
+      "sha256": "7a0b9595eb1c36e087fe47933fcec35f9b5a135ecb46c9cb71ad0351a78dd331"
+    },
+    {
+      "path": "prototype-tests/results.json",
+      "sha256": "32d76c966becce99d3b175ce03c6fd7306facd36b5231d9d76c3d63f0b516703"
+    },
+    {
+      "path": "prototype-tests/run.mjs",
+      "sha256": "849de8ac954aa9025f740114258f4fb322930643508751a71dfda6ca1402dd38"
+    },
+    {
+      "path": "selfcheck/README.md",
+      "sha256": "595f43f4c44a8e92e58d07ae78b7ffbadbac2c55c4d7a13bdc408546051abc84"
+    },
+    {
+      "path": "selfcheck/baseline-results.json",
+      "sha256": "7cfe436dd6fe0d2f3ead31bac8cb1b1aeb5b9d116cbfc8897d7f40cb46b508a8"
+    },
+    {
+      "path": "selfcheck/check_v03_contracts.py",
+      "sha256": "caea682887e75010d66d1244cd4f991a89b29d613d68798e9d007b51819835b8"
+    },
+    {
+      "path": "selfcheck/dependency-lock.txt",
+      "sha256": "bdb7fd6b6476d565eb2697210e331195b02443526c32fed95d1a03ae76ed5259"
+    },
+    {
+      "path": "selfcheck/final-results.json",
+      "sha256": "18aa3376cf267bb6f6d4467582afdcb7f77210a657b9d6eea0a805ec9d25d826"
+    },
+    {
+      "path": "selfcheck/requirements.txt",
+      "sha256": "e296d3ced2ff819a151a93b9d14caabed32a5d3910c1aa98b24ae3650fcd0b4f"
+    },
+    {
+      "path": "selfcheck/run_checks.py",
+      "sha256": "2e2cef133b05bd12598bc084e4b68ca8985f8e3e10d09c730d04cf3d243e7520"
+    },
+    {
+      "path": "selfcheck/schema-before.json",
+      "sha256": "fdcdc6fd9d44963fa7757f73bd0b8e3e5fa5c5cdd3fb005b56a656fb5430fc0c"
+    },
+    {
+      "path": "selfcheck/schema-v0.2.json",
+      "sha256": "090d68e3724709190c851140fa888b99ab34f85e0f8ca2316c12db76f29ffdf6"
+    },
+    {
+      "path": "selfcheck/v0.3-contract-results.json",
+      "sha256": "41be9a40be71147a51a18ccc1a9b680227bef8a45457ea2c4c54f77adf3c4b6d"
+    },
+    {
+      "path": "selfcheck/v0.3-regression-results.json",
+      "sha256": "b0b4239ddd11295d46bd5060ea2bd1221e0997e6082e52bb0b6944e264312ce0"
+    },
+    {
+      "path": "skills/job-search-agent/SKILL.md",
+      "sha256": "479b1aa8a72f41ba2f411cefabf180952ede1456fb90892c77c71d7a7e0c1281"
+    },
+    {
+      "path": "skills/job-search-agent/agents/openai.yaml",
+      "sha256": "dc66160c9f2333e651322285ae2a1802714dbfb62d28d7725bfc7005811e090f"
+    },
+    {
+      "path": "skills/job-search-agent/references/contracts.md",
+      "sha256": "af775b5f218a038db8c4ca5a3ccccb6c0efe8e1cc4bfea1a0e412935e1930ba1"
+    },
+    {
+      "path": "skills/job-search-agent/references/local-runtime.md",
+      "sha256": "7e2d99c7932798201b01d4571d3f53008969c63f18da64704ffc270a3d85bc94"
+    },
+    {
+      "path": "skills/job-search-agent/references/model-contracts.schema.json",
+      "sha256": "b9307d56b9c18e5ea11e13ce6700aa5c1e3f7cf492f0524953be17b65b6c1042"
+    },
+    {
+      "path": "skills/job-search-agent/scripts/job-agent.mjs",
+      "sha256": "287478dea2810ba9c628717dacad6ef441240fbbb5bcab35c1610838e7c3b1e6"
+    },
+    {
+      "path": "求职自动化投递Agent设计.md",
+      "sha256": "ae0b8e668034ab77c4c71f3f23594460ffce2474e2b84e1c62ff52ea8b7b529e"
+    }
+  ]
+}

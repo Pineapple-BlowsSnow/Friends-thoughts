@@ -1,0 +1,85 @@
+{
+  "retrieved_at": "2026-10-03",
+  "scope": "Public README, license and selected source review. Competitor runtime behavior untested.",
+  "repositories": [
+    {
+      "repository": "GresonKwan/JobOK",
+      "url": "https://github.com/GresonKwan/JobOK",
+      "archived": false,
+      "license": "MIT",
+      "stars": 408,
+      "default_branch": "main",
+      "head": "c5da0c6a6c9936b640a202c78cdd6e64b2981ba6",
+      "head_commit_at": "2026-06-18T02:49:27Z",
+      "pushed_at": "2026-06-18T02:49:40Z"
+    },
+    {
+      "repository": "Gsync/jobsync",
+      "url": "https://github.com/Gsync/jobsync",
+      "archived": false,
+      "license": "MIT",
+      "stars": 1354,
+      "default_branch": "main",
+      "head": "ef3d7eec5c9aebaa1c6e03fc3ddd62d7dca8e37f",
+      "head_commit_at": "2026-09-27T01:29:17Z",
+      "pushed_at": "2026-10-02T23:11:32Z"
+    },
+    {
+      "repository": "reactive-resume/reactive-resume",
+      "url": "https://github.com/reactive-resume/reactive-resume",
+      "license": "MIT",
+      "head": "b53c43c3722741946603ac46beda173931aeb646",
+      "head_commit_at": "2026-09-30",
+      "source_review": "resume_components"
+    },
+    {
+      "repository": "DaKheera47/job-ops",
+      "url": "https://github.com/DaKheera47/job-ops",
+      "license": "AGPL-3.0 + Commons Clause",
+      "head": "c28b90a5fba75f298cb1d6a49460ddf009808715",
+      "head_commit_at": "2026-09-17T16:54:16Z",
+      "source_review": "competitor_agents"
+    },
+    {
+      "repository": "17nbist/jobApplier",
+      "url": "https://github.com/17nbist/jobApplier",
+      "license": null,
+      "head": "d025a1c6bc09a7cfbbe3580ad4a3638b110366bb",
+      "head_commit_at": "2026-07-19T15:02:39Z",
+      "source_review": "competitor_agents"
+    },
+    {
+      "repository": "jhomer192/auto-applier",
+      "url": "https://github.com/jhomer192/auto-applier",
+      "license": null,
+      "head": "37a13f558e19bdd0cefeeed161974a02ef120f9c",
+      "head_commit_at": "2026-09-19T00:15:42Z",
+      "source_review": "competitor_agents"
+    },
+    {
+      "repository": "xitanggg/open-resume",
+      "url": "https://github.com/xitanggg/open-resume",
+      "license": "AGPL-3.0",
+      "head": "4f8255a2c763479837f69f1dccf2a3338730cd79",
+      "head_commit_at": "2024-10-29",
+      "source_review": "resume_components"
+    },
+    {
+      "repository": "speedyapply/JobSpy",
+      "url": "https://github.com/speedyapply/JobSpy",
+      "license": "MIT",
+      "head": "83efd3d2ee7fce72d2b4cc4adb670f7e2b0e0e6b",
+      "head_commit_at": "2026-10-02",
+      "source_review": "resume_components"
+    },
+    {
+      "repository": "feder-cr/invisible_playwright_mcp",
+      "former_url": "https://github.com/feder-cr/Jobs_Applier_AI_Agent_AIHawk",
+      "url": "https://github.com/feder-cr/invisible_playwright_mcp",
+      "license": "MIT for current code; pre-2026-09-02 distributions retain AGPL-3.0 per README",
+      "head": "4139237b0abc6712bb44e4a3a2ff3dbeb77f1d80",
+      "head_commit_at": "2026-10-03T04:08:08Z",
+      "source_review": "competitor_agents"
+    }
+  ]
+}
