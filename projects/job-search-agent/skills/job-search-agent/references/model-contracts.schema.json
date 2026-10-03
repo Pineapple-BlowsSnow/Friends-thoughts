@@ -1,0 +1,3019 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/job-agent/model-contracts.schema.json",
+  "title": "求职投递 Agent 结构化合同",
+  "description": "设计版本 v0.3。$id 为非生产标识。必须启用 FormatChecker，并按任务定向验证 $defs；共享 oneOf 仅供离线通用校验，不能赋予权限。",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/JDParsed"
+    },
+    {
+      "$ref": "#/$defs/MatchEvidence"
+    },
+    {
+      "$ref": "#/$defs/ApplicationDraft"
+    },
+    {
+      "$ref": "#/$defs/DraftReview"
+    },
+    {
+      "$ref": "#/$defs/StatusClassification"
+    },
+    {
+      "$ref": "#/$defs/ScoreResult"
+    },
+    {
+      "$ref": "#/$defs/ConnectorPolicy"
+    },
+    {
+      "$ref": "#/$defs/ApprovalBinding"
+    },
+    {
+      "$ref": "#/$defs/StatusEvent"
+    },
+    {
+      "$ref": "#/$defs/EvaluationRun"
+    },
+    {
+      "$ref": "#/$defs/DocumentPatch"
+    },
+    {
+      "$ref": "#/$defs/EvidenceRequest"
+    },
+    {
+      "$ref": "#/$defs/MailReviewItem"
+    },
+    {
+      "$ref": "#/$defs/InterviewStory"
+    }
+  ],
+  "$defs": {
+    "SourceSpan": {
+      "type": "object",
+      "properties": {
+        "source_text_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "source_text_sha256",
+        "start",
+        "end",
+        "quote"
+      ],
+      "additionalProperties": false,
+      "$comment": "Unicode code point offset，end exclusive；代码验证 start < end、quote 与原文一致。原文文本哈希与 raw_blob 哈希分开，保留映射。"
+    },
+    "Requirement": {
+      "type": "object",
+      "properties": {
+        "requirement_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "responsibility",
+            "skill",
+            "experience",
+            "education",
+            "certificate",
+            "language",
+            "work_authorization",
+            "location",
+            "workplace",
+            "contract",
+            "other"
+          ]
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "must_have",
+            "nice_to_have",
+            "unspecified"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "certainty": {
+          "type": "string",
+          "enum": [
+            "explicit",
+            "inferred"
+          ]
+        },
+        "source_span": {
+          "$ref": "#/$defs/SourceSpan"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "kind",
+        "priority",
+        "value",
+        "certainty",
+        "source_span"
+      ],
+      "additionalProperties": false
+    },
+    "Salary": {
+      "type": "object",
+      "properties": {
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Z]{3}$",
+          "minLength": 1
+        },
+        "min_minor": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "max_minor": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "period": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "hour",
+            "day",
+            "month",
+            "year",
+            null
+          ],
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "tax_basis": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "gross",
+            "net",
+            null
+          ],
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "compensation_basis": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "base",
+            "total",
+            "unspecified",
+            null
+          ],
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "original_expression": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "source_span": {
+          "$ref": "#/$defs/SourceSpan"
+        }
+      },
+      "required": [
+        "currency",
+        "min_minor",
+        "max_minor",
+        "period",
+        "tax_basis",
+        "compensation_basis",
+        "original_expression",
+        "source_span"
+      ],
+      "additionalProperties": false
+    },
+    "JDParsed": {
+      "type": "object",
+      "properties": {
+        "job_version_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "raw_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_text_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "language": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Requirement"
+          },
+          "minItems": 0
+        },
+        "salary": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Salary"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "deadline": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "job_version_id",
+        "raw_sha256",
+        "source_text_sha256",
+        "language",
+        "requirements",
+        "salary",
+        "deadline",
+        "unknowns",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    "EvidenceItem": {
+      "type": "object",
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "skills",
+            "responsibilities",
+            "seniority",
+            "domain",
+            "conditions",
+            "goals"
+          ]
+        },
+        "requirement_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "fact_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "evidence_state": {
+          "type": "string",
+          "enum": [
+            "supported",
+            "partial",
+            "unsupported",
+            "unknown",
+            "conflict"
+          ]
+        },
+        "match_level": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "enum": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1,
+            null
+          ]
+        },
+        "brief_reason": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "missing_information": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        },
+        "evidence_item_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "evidence_item_id",
+        "dimension",
+        "requirement_id",
+        "fact_ids",
+        "evidence_state",
+        "match_level",
+        "brief_reason",
+        "missing_information"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "evidence_state": {
+                "enum": [
+                  "unknown",
+                  "conflict"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "match_level": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "match_level": {
+                "type": "number",
+                "enum": [
+                  0,
+                  0.25,
+                  0.5,
+                  0.75,
+                  1
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_state": {
+                "enum": [
+                  "supported",
+                  "partial",
+                  "unsupported"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "fact_ids": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_state": {
+                "const": "unsupported"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "match_level": {
+                "const": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_state": {
+                "const": "supported"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "match_level": {
+                "const": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_state": {
+                "const": "partial"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "match_level": {
+                "enum": [
+                  0.25,
+                  0.5,
+                  0.75
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "MatchEvidence": {
+      "type": "object",
+      "properties": {
+        "job_version_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "fact_snapshot_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "preference_version_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "scoring_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EvidenceItem"
+          },
+          "minItems": 0
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "job_version_id",
+        "fact_snapshot_hash",
+        "preference_version_id",
+        "scoring_version",
+        "items",
+        "warnings"
+      ],
+      "additionalProperties": false,
+      "$comment": "输出仅为模型候选证据，不具备审批或提交权限。"
+    },
+    "DraftSection": {
+      "type": "object",
+      "properties": {
+        "section_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "section_id",
+        "title",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "Claim": {
+      "type": "object",
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "output_section_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "claim_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "fact_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "jd_requirement_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        },
+        "transformation": {
+          "type": "string",
+          "enum": [
+            "verbatim",
+            "rephrase",
+            "translate",
+            "shorten"
+          ]
+        }
+      },
+      "required": [
+        "claim_id",
+        "output_section_id",
+        "start",
+        "end",
+        "claim_text",
+        "fact_ids",
+        "jd_requirement_ids",
+        "transformation"
+      ],
+      "additionalProperties": false,
+      "$comment": "output_section_id 引用 resume_sections 中的 section_id；求职信使用保留 ID cover_letter。offset 为 Unicode code point；代码验证文本区间与 fact_ids 归属。"
+    },
+    "ApplicationDraft": {
+      "type": "object",
+      "properties": {
+        "job_version_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "fact_snapshot_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "language": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "resume_sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DraftSection"
+          },
+          "minItems": 1
+        },
+        "cover_letter": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Claim"
+          },
+          "minItems": 1
+        },
+        "change_summary": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        },
+        "questions_for_user": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "job_version_id",
+        "fact_snapshot_hash",
+        "language",
+        "resume_sections",
+        "cover_letter",
+        "claims",
+        "change_summary",
+        "questions_for_user",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    "ReviewIssue": {
+      "type": "object",
+      "properties": {
+        "issue_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "blocker",
+            "warning",
+            "info"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "unsupported_fact",
+            "numbers_dates",
+            "responsibility",
+            "required_field",
+            "placeholder",
+            "sensitive_data",
+            "language",
+            "attachment",
+            "other"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "issue_id",
+        "severity",
+        "category",
+        "location",
+        "evidence_refs",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "DraftReview": {
+      "type": "object",
+      "properties": {
+        "draft_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReviewIssue"
+          },
+          "minItems": 0
+        },
+        "recommended_fixes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "draft_digest",
+        "issues",
+        "recommended_fixes",
+        "warnings"
+      ],
+      "additionalProperties": false,
+      "$comment": "无 passed 字段；是否通过由规则服务判断。"
+    },
+    "StatusClassification": {
+      "type": "object",
+      "properties": {
+        "source_event_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "proposed_stage": {
+          "type": "string",
+          "enum": [
+            "unknown",
+            "acknowledged",
+            "human_reply",
+            "screening",
+            "interview",
+            "offer",
+            "rejected",
+            "withdrawn",
+            "bounce"
+          ]
+        },
+        "application_candidates": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "evidence_quote": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "ambiguous": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        },
+        "source_namespace": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "source_event_id",
+        "proposed_stage",
+        "application_candidates",
+        "evidence_quote",
+        "confidence",
+        "ambiguous",
+        "reason",
+        "warnings",
+        "source_namespace"
+      ],
+      "additionalProperties": false,
+      "$comment": "confidence 是待校准候选值；代码必须验证唯一关联、引文、冲突与校准结果。",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "proposed_stage": {
+                "not": {
+                  "const": "unknown"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "evidence_quote": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "proposed_stage": {
+                "not": {
+                  "const": "unknown"
+                }
+              },
+              "ambiguous": {
+                "const": false
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "application_candidates": {
+                "minItems": 1,
+                "maxItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "application_candidates": {
+                "minItems": 2
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "ambiguous": {
+                "const": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    "HardCheck": {
+      "type": "object",
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "result": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "unknown"
+          ]
+        },
+        "critical": {
+          "type": "boolean"
+        },
+        "requirement_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "fact_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "rule_id",
+        "result",
+        "critical",
+        "requirement_id",
+        "fact_ids",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "DimensionScore": {
+      "type": "object",
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "skills",
+            "responsibilities",
+            "seniority",
+            "domain",
+            "conditions",
+            "goals"
+          ]
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "known_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "contribution_low": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "unknown_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "evidence_item_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "dimension",
+        "weight",
+        "known_weight",
+        "contribution_low",
+        "unknown_weight",
+        "evidence_item_ids"
+      ],
+      "additionalProperties": false
+    },
+    "ScoreResult": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "user_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "job_version_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "preference_version_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "fact_snapshot_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "scoring_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "hard_checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/HardCheck"
+          },
+          "minItems": 0
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DimensionScore"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "score_low": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "score_high": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "coverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "route": {
+          "type": "string",
+          "enum": [
+            "BLOCKED",
+            "LOW_MATCH",
+            "REVIEW",
+            "NEEDS_INFO",
+            "HIGH_MATCH"
+          ]
+        },
+        "calculated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "job_version_id",
+        "preference_version_id",
+        "fact_snapshot_hash",
+        "scoring_version",
+        "hard_checks",
+        "dimensions",
+        "score_low",
+        "score_high",
+        "coverage",
+        "route",
+        "calculated_at"
+      ],
+      "additionalProperties": false,
+      "$comment": "可信代码生成，不是模型输出。代码检查6个维度唯一、weights=100、low<=high、coverage计算、路由和hard_checks。"
+    },
+    "ConnectorPolicy": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "user_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "collect_allowed": {
+          "type": "boolean",
+          "default": false
+        },
+        "prefill_allowed": {
+          "type": "boolean",
+          "default": false
+        },
+        "submit_allowed": {
+          "type": "boolean",
+          "default": false
+        },
+        "tos_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "tos_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "reviewed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "review_due_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "target_allowlist": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "auth_secret_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "grant_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "disabled",
+            "review_required",
+            "enabled",
+            "paused"
+          ]
+        },
+        "upload_allowed": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "required": [
+        "source_id",
+        "user_id",
+        "collect_allowed",
+        "prefill_allowed",
+        "submit_allowed",
+        "tos_url",
+        "tos_digest",
+        "reviewed_at",
+        "review_due_at",
+        "target_allowlist",
+        "auth_secret_ref",
+        "grant_ids",
+        "state",
+        "upload_allowed"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "enabled"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target_allowlist": {
+                "minItems": 1
+              },
+              "grant_ids": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "disabled",
+                  "review_required",
+                  "paused"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "collect_allowed": {
+                "const": false
+              },
+              "prefill_allowed": {
+                "const": false
+              },
+              "submit_allowed": {
+                "const": false
+              },
+              "upload_allowed": {
+                "const": false
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "submit_allowed": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "auth_secret_ref": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ApprovalBinding": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "user_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "application_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "policy_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "approve",
+            "reject"
+          ]
+        },
+        "actor_session_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "approved_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "revoked_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "exception_reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "operation_scopes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefill",
+              "upload",
+              "submit"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "questionnaire_schema_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "application_id",
+        "payload_id",
+        "payload_hash",
+        "policy_version",
+        "decision",
+        "actor_session_ref",
+        "approved_at",
+        "expires_at",
+        "revoked_at",
+        "exception_reason",
+        "operation_scopes",
+        "questionnaire_schema_hash"
+      ],
+      "additionalProperties": false,
+      "$comment": "仅为审批创建合同。consumed_at 是持久化实体字段；Schema 通过不证明本人认证、申请归属、decision 授权或有效期。"
+    },
+    "StatusEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "user_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "application_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "event_type": {
+          "type": "string",
+          "enum": [
+            "transport",
+            "receipt",
+            "recruitment",
+            "correction",
+            "user_report"
+          ]
+        },
+        "stage": {
+          "type": "string",
+          "enum": [
+            "SENT",
+            "ACCEPTED",
+            "SUBMISSION_UNKNOWN",
+            "FAILED",
+            "ASSISTED_READY",
+            "SELF_REPORTED_SUBMITTED",
+            "NO_UPDATE",
+            "ACKNOWLEDGED",
+            "SCREENING",
+            "INTERVIEW",
+            "REPLIED",
+            "OFFER",
+            "REJECTED",
+            "WITHDRAWN",
+            "DELIVERY_FAILED"
+          ]
+        },
+        "evidence_type": {
+          "type": "string",
+          "enum": [
+            "official_api",
+            "official_webhook",
+            "email",
+            "user_entry",
+            "browser_receipt"
+          ]
+        },
+        "source_event_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "evidence_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "supersedes_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "confirmed_by": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_namespace": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "round": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "application_id",
+        "event_type",
+        "stage",
+        "evidence_type",
+        "source_event_id",
+        "evidence_ref",
+        "evidence_sha256",
+        "confidence",
+        "occurred_at",
+        "observed_at",
+        "supersedes_id",
+        "confirmed_by",
+        "source_namespace",
+        "round"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "event_type": {
+                "const": "transport"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "stage": {
+                "enum": [
+                  "SENT",
+                  "SUBMISSION_UNKNOWN",
+                  "FAILED",
+                  "ASSISTED_READY",
+                  "DELIVERY_FAILED"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event_type": {
+                "const": "receipt"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "stage": {
+                "enum": [
+                  "ACCEPTED",
+                  "ACKNOWLEDGED"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event_type": {
+                "const": "recruitment"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "stage": {
+                "enum": [
+                  "NO_UPDATE",
+                  "ACKNOWLEDGED",
+                  "REPLIED",
+                  "SCREENING",
+                  "INTERVIEW",
+                  "OFFER",
+                  "REJECTED",
+                  "WITHDRAWN"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event_type": {
+                "const": "correction"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "supersedes_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "confirmed_by": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event_type": {
+                "const": "user_report"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "stage": {
+                "enum": [
+                  "SELF_REPORTED_SUBMITTED",
+                  "NO_UPDATE",
+                  "ACKNOWLEDGED",
+                  "REPLIED",
+                  "SCREENING",
+                  "INTERVIEW",
+                  "OFFER",
+                  "REJECTED",
+                  "WITHDRAWN"
+                ]
+              },
+              "evidence_type": {
+                "const": "user_entry"
+              },
+              "confirmed_by": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "stage": {
+                "not": {
+                  "const": "INTERVIEW"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "round": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "EvaluationRun": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "user_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "job_version_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "fact_snapshot_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "preference_version_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "screening_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "scoring_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "UNASSESSED",
+            "DEFERRED",
+            "RUNNING",
+            "COMPLETED",
+            "FAILED",
+            "CANCELLED"
+          ]
+        },
+        "selection_reason": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "scheduling_rank": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "score_result_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "model_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "actual_cost": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "minor_units": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "currency": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{3}$"
+                }
+              },
+              "required": [
+                "minor_units",
+                "currency"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "started_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "finished_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "failure_code": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "job_version_id",
+        "fact_snapshot_hash",
+        "preference_version_id",
+        "screening_version",
+        "scoring_version",
+        "state",
+        "selection_reason",
+        "scheduling_rank",
+        "score_result_id",
+        "model_ref",
+        "actual_cost",
+        "created_at",
+        "started_at",
+        "finished_at",
+        "failure_code"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "COMPLETED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "score_result_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "started_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "finished_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "failure_code": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "not": {
+                  "const": "COMPLETED"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "score_result_id": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "FAILED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "failure_code": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "finished_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "RUNNING"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "started_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "finished_at": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "DocumentPatchOperation": {
+      "type": "object",
+      "properties": {
+        "section_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "before_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "after_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Claim"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "section_id",
+        "before_digest",
+        "after_text",
+        "claims"
+      ],
+      "additionalProperties": false
+    },
+    "DocumentPatch": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "user_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "document_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "base_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "base_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "fact_snapshot_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DocumentPatchOperation"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "PROPOSED",
+            "ACCEPTED",
+            "REJECTED",
+            "STALE",
+            "VALIDATION_FAILED"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "decided_by": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "decided_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "result_document_digest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "document_id",
+        "base_version",
+        "base_digest",
+        "fact_snapshot_hash",
+        "operations",
+        "state",
+        "created_at",
+        "decided_by",
+        "decided_at",
+        "result_document_digest"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "PROPOSED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "decided_by": {
+                "type": "null"
+              },
+              "decided_at": {
+                "type": "null"
+              },
+              "result_document_digest": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "ACCEPTED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "decided_by": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "decided_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "result_document_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "not": {
+                  "const": "ACCEPTED"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "result_document_digest": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "DocumentPatchProposal": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/DocumentPatch"
+        },
+        {
+          "properties": {
+            "state": {
+              "const": "PROPOSED"
+            }
+          }
+        }
+      ]
+    },
+    "EvidenceRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "user_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "job_version_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "requirement_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason_code": {
+          "type": "string",
+          "enum": [
+            "missing_fact",
+            "conflict",
+            "unknown_hard_constraint",
+            "unsupported_claim",
+            "missing_result"
+          ]
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "related_fact_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "OPEN",
+            "ANSWERED",
+            "CONFIRMED",
+            "DISMISSED"
+          ]
+        },
+        "response_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "response_digest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resolution_fact_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "answered_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "confirmed_by": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "confirmed_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dismiss_reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "job_version_id",
+        "requirement_id",
+        "reason_code",
+        "question",
+        "related_fact_ids",
+        "state",
+        "response_ref",
+        "response_digest",
+        "resolution_fact_ids",
+        "created_at",
+        "answered_at",
+        "confirmed_by",
+        "confirmed_at",
+        "dismiss_reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "OPEN"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "response_ref": {
+                "type": "null"
+              },
+              "response_digest": {
+                "type": "null"
+              },
+              "answered_at": {
+                "type": "null"
+              },
+              "confirmed_by": {
+                "type": "null"
+              },
+              "confirmed_at": {
+                "type": "null"
+              },
+              "dismiss_reason": {
+                "type": "null"
+              },
+              "resolution_fact_ids": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "ANSWERED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "response_ref": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "response_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "answered_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "confirmed_by": {
+                "type": "null"
+              },
+              "confirmed_at": {
+                "type": "null"
+              },
+              "resolution_fact_ids": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "CONFIRMED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "response_ref": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "response_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "answered_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "resolution_fact_ids": {
+                "minItems": 1
+              },
+              "confirmed_by": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "confirmed_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "DISMISSED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "dismiss_reason": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "confirmed_by": {
+                "type": "null"
+              },
+              "confirmed_at": {
+                "type": "null"
+              },
+              "resolution_fact_ids": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "EvidenceRequestDraft": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EvidenceRequest"
+        },
+        {
+          "properties": {
+            "state": {
+              "const": "OPEN"
+            }
+          }
+        }
+      ]
+    },
+    "MailReviewItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "user_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "source_namespace": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "source_event_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "evidence_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "received_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "classification": {
+          "$ref": "#/$defs/StatusClassification"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "UNRESOLVED",
+            "LINKED",
+            "IGNORED"
+          ]
+        },
+        "selected_application_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "decision_reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "decided_by": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "decided_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status_event_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "row_version": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "source_namespace",
+        "source_event_id",
+        "evidence_ref",
+        "evidence_sha256",
+        "received_at",
+        "classification",
+        "state",
+        "selected_application_id",
+        "decision_reason",
+        "decided_by",
+        "decided_at",
+        "status_event_id",
+        "row_version"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "UNRESOLVED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "selected_application_id": {
+                "type": "null"
+              },
+              "decision_reason": {
+                "type": "null"
+              },
+              "decided_by": {
+                "type": "null"
+              },
+              "decided_at": {
+                "type": "null"
+              },
+              "status_event_id": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "LINKED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "selected_application_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "decision_reason": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "decided_by": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "decided_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "status_event_id": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "IGNORED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "decision_reason": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "decided_by": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "decided_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "selected_application_id": {
+                "type": "null"
+              },
+              "status_event_id": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "StoryClaim": {
+      "type": "object",
+      "properties": {
+        "section": {
+          "type": "string",
+          "enum": [
+            "situation",
+            "task",
+            "action",
+            "result"
+          ]
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "fact_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "section",
+        "start",
+        "end",
+        "text",
+        "fact_ids"
+      ],
+      "additionalProperties": false
+    },
+    "InterviewStory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "user_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "job_version_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fact_snapshot_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "competency_tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "situation": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "task": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/StoryClaim"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "missing_information": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "review_state": {
+          "type": "string",
+          "enum": [
+            "DRAFT",
+            "NEEDS_INFO",
+            "VERIFIED"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reviewed_by": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewed_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "job_version_id",
+        "fact_snapshot_hash",
+        "title",
+        "competency_tags",
+        "situation",
+        "task",
+        "action",
+        "result",
+        "claims",
+        "missing_information",
+        "review_state",
+        "created_at",
+        "reviewed_by",
+        "reviewed_at"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "review_state": {
+                "enum": [
+                  "DRAFT",
+                  "NEEDS_INFO"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "reviewed_by": {
+                "type": "null"
+              },
+              "reviewed_at": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "review_state": {
+                "const": "VERIFIED"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "reviewed_by": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "reviewed_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "result": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "missing_information": {
+                "minItems": 1
+              },
+              "review_state": {
+                "enum": [
+                  "DRAFT",
+                  "NEEDS_INFO"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "InterviewStoryDraft": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/InterviewStory"
+        },
+        {
+          "properties": {
+            "review_state": {
+              "enum": [
+                "DRAFT",
+                "NEEDS_INFO"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$comment": "跨对象身份、引用、数值求和、时间顺序、真实性与状态转换由可信服务校验；参见 04_数据Schema.md。 v0.3 新增服务状态与受限模型候选合同，模型必须定向 Proposal/Draft 校验。"
+}
