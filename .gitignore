@@ -1,0 +1,14 @@
+.DS_Store
+**/.venv/
+**/node_modules/
+**/__pycache__/
+**/*.py[cod]
+**/.env
+**/.env.*
+**/cases/
+**/private-data/
+**/keys/
+**/*.key
+**/case.enc.json
+**/.lock
+**/.state-*.tmp
